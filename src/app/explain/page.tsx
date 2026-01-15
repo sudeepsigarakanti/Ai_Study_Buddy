@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Sparkles, Send } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
+import ProfileMenu from '@/components/ProfileMenu';
 
 export default function ExplainPage() {
     const [input, setInput] = useState('');
@@ -33,11 +34,14 @@ export default function ExplainPage() {
 
     return (
         <div className="container" style={{ minHeight: '100vh', padding: '2rem' }}>
-            <header style={{ marginBottom: '3rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                <Link href="/" style={{ padding: '0.5rem', background: 'rgba(255,255,255,0.1)', borderRadius: '50%' }}>
-                    <ArrowLeft size={24} />
-                </Link>
-                <span style={{ fontSize: '1.2rem', fontWeight: 600, color: 'var(--primary)' }}>Explain AI</span>
+            <header style={{ marginBottom: '3rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                    <Link href="/" style={{ padding: '0.5rem', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <ArrowLeft size={24} />
+                    </Link>
+                    <span style={{ fontSize: '1.2rem', fontWeight: 600, color: 'var(--primary)' }}>Explain AI</span>
+                </div>
+                <ProfileMenu />
             </header>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'minmax(300px, 45%) 1fr', gap: '2rem', height: 'calc(100vh - 150px)' }}>

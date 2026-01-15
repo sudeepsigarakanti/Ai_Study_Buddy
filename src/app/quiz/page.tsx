@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, BrainCircuit, Play, CheckCircle, XCircle, RotateCw } from 'lucide-react';
+import ProfileMenu from '@/components/ProfileMenu';
 
 interface Question {
     question: string;
@@ -81,11 +82,14 @@ export default function QuizPage() {
 
     return (
         <div className="container" style={{ minHeight: '100vh', padding: '2rem' }}>
-            <header style={{ marginBottom: '3rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                <Link href="/" style={{ padding: '0.5rem', background: 'rgba(255,255,255,0.1)', borderRadius: '50%' }}>
-                    <ArrowLeft size={24} />
-                </Link>
-                <span style={{ fontSize: '1.2rem', fontWeight: 600, color: 'var(--accent)' }}>AI Quiz Master</span>
+            <header style={{ marginBottom: '3rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                    <Link href="/" style={{ padding: '0.5rem', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <ArrowLeft size={24} />
+                    </Link>
+                    <span style={{ fontSize: '1.2rem', fontWeight: 600, color: 'var(--accent)' }}>AI Quiz Master</span>
+                </div>
+                <ProfileMenu />
             </header>
 
             {!quizStarted ? (

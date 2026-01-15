@@ -34,6 +34,14 @@ export default function LoginPage() {
                 throw new Error(data.message || 'Something went wrong');
             }
 
+            // Store user data in localStorage for ProfileMenu
+            if (data.user) {
+                localStorage.setItem('user', JSON.stringify({
+                    name: data.user.username,  // Use username from API response
+                    email: data.user.email
+                }));
+            }
+
             // Redirect to home
             window.location.href = '/'; // Hard reload to update auth state if using cookies middleware
         } catch (err: any) {
