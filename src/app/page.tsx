@@ -1,17 +1,35 @@
+"use client";
+
+import { useState, useEffect } from 'react';
 import Link from "next/link";
 import { BookOpen, FileText, BrainCircuit, ArrowRight } from "lucide-react";
+import ProfileMenu from '@/components/ProfileMenu';
 
 export default function Home() {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    useEffect(() => {
+        // Check if user is logged in by checking localStorage
+        const userData = localStorage.getItem('user');
+        setIsLoggedIn(!!userData);
+    }, []);
+
     return (
         <main className="container">
             <header style={{ display: 'flex', justifyContent: 'flex-end', padding: '1.5rem 0', position: 'absolute', top: 0, left: 0, right: 0, width: '100%', maxWidth: '1200px', margin: '0 auto', boxSizing: 'border-box' }}>
                 <nav style={{ display: 'flex', gap: '1rem' }}>
-                    <Link href="/login" style={{ padding: '0.5rem 1.5rem', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.2)', color: 'white', textDecoration: 'none', transition: 'all 0.2s' }}>
-                        Log In
-                    </Link>
-                    <Link href="/signup" className="btn-primary" style={{ padding: '0.5rem 1.5rem', fontSize: '1rem' }}>
-                        Sign Up
-                    </Link>
+                    {!isLoggedIn ? (
+                        <>
+                            <Link href="/login" style={{ padding: '0.5rem 1.5rem', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.2)', color: 'white', textDecoration: 'none', transition: 'all 0.2s' }}>
+                                Log In
+                            </Link>
+                            <Link href="/signup" className="btn-primary" style={{ padding: '0.5rem 1.5rem', fontSize: '1rem' }}>
+                                Sign Up
+                            </Link>
+                        </>
+                    ) : (
+                        <ProfileMenu />
+                    )}
                 </nav>
             </header>
 
