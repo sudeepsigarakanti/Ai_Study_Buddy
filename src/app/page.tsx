@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from "next/link";
-import { BookOpen, FileText, BrainCircuit, ArrowRight } from "lucide-react";
+import { BookOpen, FileText, BrainCircuit, ArrowRight, Sparkles, Target, Zap, TrendingUp } from "lucide-react";
 import ProfileMenu from '@/components/ProfileMenu';
 
 export default function Home() {
@@ -15,92 +15,202 @@ export default function Home() {
     }, []);
 
     return (
-        <main className="container">
-            <header style={{ display: 'flex', justifyContent: 'flex-end', padding: '1.5rem 0', position: 'absolute', top: 0, left: 0, right: 0, width: '100%', maxWidth: '1200px', margin: '0 auto', boxSizing: 'border-box' }}>
-                <nav style={{ display: 'flex', gap: '1rem' }}>
-                    {!isLoggedIn ? (
-                        <>
-                            <Link href="/login" style={{ padding: '0.5rem 1.5rem', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.2)', color: 'white', textDecoration: 'none', transition: 'all 0.2s' }}>
-                                Log In
-                            </Link>
-                            <Link href="/signup" className="btn-primary" style={{ padding: '0.5rem 1.5rem', fontSize: '1rem' }}>
-                                Sign Up
-                            </Link>
-                        </>
-                    ) : (
-                        <ProfileMenu />
-                    )}
-                </nav>
-            </header>
+        <main className="page-wrapper">
+            {/* Animated Background */}
+            <div className="gradient-bg"></div>
+            <div className="gradient-orb gradient-orb-1"></div>
+            <div className="gradient-orb gradient-orb-2"></div>
+            <div className="gradient-orb gradient-orb-3"></div>
 
-            <section style={{ minHeight: '80vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center' }}>
-                <div className="animate-fade-in">
-                    <h1 style={{ fontSize: '4rem', fontWeight: '800', marginBottom: '1.5rem', lineHeight: 1.1 }}>
-                        Master Any Topic with <br />
-                        <span className="bg-gradient-text">AI Precision</span>
-                    </h1>
-                    <p style={{ fontSize: '1.25rem', color: '#94a3b8', maxWidth: '600px', margin: '0 auto 3rem auto' }}>
-                        Your personal AI tutor. Simplify complex topics, summarize notes instantly, and test your knowledge with auto-generated quizzes.
-                    </p>
+            <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+                {/* Header */}
+                <header className="header-nav">
+                    <div className="logo-section">
+                        <Sparkles size={28} color="#818cf8" />
+                        <span className="logo-text">AI Study</span>
+                    </div>
+                    <nav style={{ display: 'flex', gap: '1rem' }}>
+                        {!isLoggedIn ? (
+                            <>
+                                <Link href="/login" className="btn-secondary">
+                                    Log In
+                                </Link>
+                                <Link href="/signup" className="btn-primary">
+                                    Sign Up
+                                </Link>
+                            </>
+                        ) : (
+                            <ProfileMenu />
+                        )}
+                    </nav>
+                </header>
 
-                    <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
-                        <Link href="/explain" className="btn-primary" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                            Start Learning <ArrowRight size={20} />
+                {/* Hero Section */}
+                <section className="hero-section">
+                    <div className="animate-fade-in">
+                        <div className="badge-pill">
+                            <Sparkles size={16} />
+                            <span>Powered by Advanced AI</span>
+                        </div>
+
+                        <h1 className="hero-title">
+                            Master Any Topic with
+                            <br />
+                            <span className="bg-gradient-text">AI Precision</span>
+                        </h1>
+
+                        <p className="hero-subtitle">
+                            Your personal AI tutor that adapts to your learning style. Simplify complex topics,
+                            summarize notes instantly, and test your knowledge with intelligent quizzes.
+                        </p>
+
+                        <div className="cta-buttons">
+                            <Link href="/explain" className="btn-primary btn-large">
+                                Start Learning <ArrowRight size={20} />
+                            </Link>
+                            <button className="btn-glass">
+                                View Demo
+                            </button>
+                        </div>
+
+                        {/* Stats Section */}
+                        <div className="stats-grid">
+                            <div className="stat-item">
+                                <div className="stat-number">10k+</div>
+                                <div className="stat-label">Topics Explained</div>
+                            </div>
+                            <div className="stat-divider"></div>
+                            <div className="stat-item">
+                                <div className="stat-number">95%</div>
+                                <div className="stat-label">Accuracy Rate</div>
+                            </div>
+                            <div className="stat-divider"></div>
+                            <div className="stat-item">
+                                <div className="stat-number">5k+</div>
+                                <div className="stat-label">Active Learners</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Features Section */}
+                <section className="features-section">
+                    <div className="section-header">
+                        <h2 className="section-title">Everything You Need to Excel</h2>
+                        <p className="section-subtitle">
+                            Powerful AI-driven tools designed to accelerate your learning journey
+                        </p>
+                    </div>
+
+                    <div className="features-grid">
+                        {/* Feature 1 */}
+                        <Link href="/explain" className="feature-card-link">
+                            <div className="feature-card">
+                                <div className="feature-icon" style={{ background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(99, 102, 241, 0.05))' }}>
+                                    <BookOpen size={32} color="#818cf8" />
+                                </div>
+                                <h3 className="feature-title">Explain Simply</h3>
+                                <p className="feature-description">
+                                    Struggling with a concept? Get clear, simple explanations tailored to your level.
+                                    No jargon, just understanding.
+                                </p>
+                                <div className="feature-arrow">
+                                    <ArrowRight size={20} />
+                                </div>
+                            </div>
                         </Link>
-                        <button className="glass-panel" style={{ padding: '0.75rem 1.5rem', color: 'white', fontWeight: 600, cursor: 'pointer' }}>
-                            View Demo
-                        </button>
+
+                        {/* Feature 2 */}
+                        <Link href="/notes" className="feature-card-link">
+                            <div className="feature-card">
+                                <div className="feature-icon" style={{ background: 'linear-gradient(135deg, rgba(236, 72, 153, 0.2), rgba(236, 72, 153, 0.05))' }}>
+                                    <FileText size={32} color="#f472b6" />
+                                </div>
+                                <h3 className="feature-title">Smart Summarizer</h3>
+                                <p className="feature-description">
+                                    Turn pages of notes into concise summaries. Upload text or files and extract
+                                    the key points in seconds.
+                                </p>
+                                <div className="feature-arrow">
+                                    <ArrowRight size={20} />
+                                </div>
+                            </div>
+                        </Link>
+
+                        {/* Feature 3 */}
+                        <Link href="/quiz" className="feature-card-link">
+                            <div className="feature-card">
+                                <div className="feature-icon" style={{ background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(139, 92, 246, 0.05))' }}>
+                                    <BrainCircuit size={32} color="#a78bfa" />
+                                </div>
+                                <h3 className="feature-title">AI Quiz Mode</h3>
+                                <p className="feature-description">
+                                    Test yourself with auto-generated quizzes and flashcards from any topic to
+                                    reinforce your learning.
+                                </p>
+                                <div className="feature-arrow">
+                                    <ArrowRight size={20} />
+                                </div>
+                            </div>
+                        </Link>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            {/* Features Grid */}
-            <section className="grid-cards animate-fade-in" style={{ animationDelay: '0.2s' }}>
-
-                {/* Feature 1 */}
-                <Link href="/explain">
-                    <div className="glass-panel" style={{ padding: '2rem', height: '100%', transition: 'transform 0.3s', cursor: 'pointer' }}>
-                        <div style={{ background: 'rgba(99, 102, 241, 0.2)', padding: '1rem', borderRadius: '12px', width: 'fit-content', marginBottom: '1.5rem' }}>
-                            <BookOpen size={32} color="#818cf8" />
+                {/* Benefits Section */}
+                <section className="benefits-section">
+                    <div className="benefits-grid">
+                        <div className="benefit-item">
+                            <div className="benefit-icon">
+                                <Target size={24} color="#818cf8" />
+                            </div>
+                            <h4>Personalized Learning</h4>
+                            <p>AI adapts to your pace and style</p>
                         </div>
-                        <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Explain Simply</h3>
-                        <p style={{ color: '#94a3b8', lineHeight: 1.6 }}>
-                            Struggling with a concept? Get clear, simple explanations tailored to your level. No jargon, just understanding.
-                        </p>
-                    </div>
-                </Link>
-
-                {/* Feature 2 */}
-                <Link href="/notes">
-                    <div className="glass-panel" style={{ padding: '2rem', height: '100%', transition: 'transform 0.3s', cursor: 'pointer' }}>
-                        <div style={{ background: 'rgba(236, 72, 153, 0.2)', padding: '1rem', borderRadius: '12px', width: 'fit-content', marginBottom: '1.5rem' }}>
-                            <FileText size={32} color="#f472b6" />
+                        <div className="benefit-item">
+                            <div className="benefit-icon">
+                                <Zap size={24} color="#f472b6" />
+                            </div>
+                            <h4>Instant Results</h4>
+                            <p>Get answers in seconds, not hours</p>
                         </div>
-                        <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Summarizer</h3>
-                        <p style={{ color: '#94a3b8', lineHeight: 1.6 }}>
-                            Turn pages of notes into concise summaries. Upload text or files and get the key points in seconds.
-                        </p>
-                    </div>
-                </Link>
-
-                {/* Feature 3 */}
-                <Link href="/quiz">
-                    <div className="glass-panel" style={{ padding: '2rem', height: '100%', transition: 'transform 0.3s', cursor: 'pointer' }}>
-                        <div style={{ background: 'rgba(139, 92, 246, 0.2)', padding: '1rem', borderRadius: '12px', width: 'fit-content', marginBottom: '1.5rem' }}>
-                            <BrainCircuit size={32} color="#a78bfa" />
+                        <div className="benefit-item">
+                            <div className="benefit-icon">
+                                <TrendingUp size={24} color="#a78bfa" />
+                            </div>
+                            <h4>Track Progress</h4>
+                            <p>Monitor your improvement over time</p>
                         </div>
-                        <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>AI Quiz Mode</h3>
-                        <p style={{ color: '#94a3b8', lineHeight: 1.6 }}>
-                            Test yourself. Generate flashcards and quizzes significantly from any topic to reinforce your learning.
-                        </p>
                     </div>
-                </Link>
+                </section>
 
-            </section>
+                {/* CTA Section */}
+                <section className="cta-section">
+                    <div className="cta-card">
+                        <h2 className="cta-title">Ready to Transform Your Learning?</h2>
+                        <p className="cta-subtitle">
+                            Join thousands of students who are already learning smarter with AI
+                        </p>
+                        <div className="cta-buttons">
+                            <Link href="/signup" className="btn-primary btn-large">
+                                Get Started Free <ArrowRight size={20} />
+                            </Link>
+                        </div>
+                    </div>
+                </section>
 
-            <footer style={{ marginTop: '5rem', textAlign: 'center', color: '#475569', paddingBottom: '2rem' }}>
-                <p>© 2024 Aura Study. Built for the future of learning.</p>
-            </footer>
+                {/* Footer */}
+                <footer className="footer">
+                    <div className="footer-content">
+                        <div className="footer-brand">
+                            <Sparkles size={24} color="#818cf8" />
+                            <span>AI Study</span>
+                        </div>
+                        <p className="footer-text">Built for the future of learning.</p>
+                    </div>
+                    <div className="footer-divider"></div>
+                    <p className="footer-copyright">© 2024 AI Study. All rights reserved.</p>
+                </footer>
+            </div>
         </main>
     );
 }
